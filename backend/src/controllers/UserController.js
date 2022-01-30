@@ -16,6 +16,20 @@ const UserController = {
       throw new Error(err.errors[0].message);
     }
   },
+
+  listUsers: async () => {
+    try {
+      const users = await User.findAll();
+
+      return users.map(({
+        id, email, name, createdAt, login, updatedAt,
+      }) => ({
+        id, email, name, createdAt, login, updatedAt,
+      }));
+    } catch (err) {
+      throw new Error('Error Fetching users.');
+    }
+  },
 };
 
 module.exports = UserController;

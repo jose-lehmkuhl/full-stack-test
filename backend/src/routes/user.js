@@ -1,5 +1,6 @@
 const { Router } = require('express');
-const { createUser } = require('../controllers/UserController');
+const { createUser, listUsers } = require('../controllers/UserController');
+const authMiddleware = require('../middlewares/auth');
 
 const userRouter = Router();
 
@@ -15,4 +16,14 @@ userRouter.post('/', async (req, res) => {
     return res.json({ err: err.message });
   }
 });
+
+userRouter.get('/', authMiddleware, async (req, res) => {
+  try {
+    const users = await listUsers();
+    return res.json(users);
+  } catch (err) {
+    return res.json({ err: err.message });
+  }
+});
+
 module.exports = userRouter;
