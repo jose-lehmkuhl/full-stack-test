@@ -1,6 +1,12 @@
 import React from 'react'
 
 import SignIn from './pages/SingIn'
-const App = () => <SignIn />
+import { AuthProvider } from './context/AuthContext'
+
+const App = () => (
+  <AuthProvider>
+    <SignIn />
+  </AuthProvider>
+)
 
 export default App
