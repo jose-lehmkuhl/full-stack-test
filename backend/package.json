@@ -10,6 +10,7 @@
   "author": "Jose Lehmkuhl",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "express": "^4.17.2",
     "pg": "^8.7.1",
     "sequelize": "^6.15.0"
