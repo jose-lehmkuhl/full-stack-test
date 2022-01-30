@@ -1,5 +1,7 @@
 const { Router } = require('express');
-const { createUser, listUsers } = require('../controllers/UserController');
+const {
+  createUser, listUsers, updateUser, deleteUser,
+} = require('../controllers/UserController');
 const authMiddleware = require('../middlewares/auth');
 
 const userRouter = Router();
@@ -21,6 +23,26 @@ userRouter.get('/', authMiddleware, async (req, res) => {
   try {
     const users = await listUsers();
     return res.json(users);
+  } catch (err) {
+    return res.json({ err: err.message });
+  }
+});
+
+userRouter.patch('/', authMiddleware, async (req, res) => {
+  try {
+    if (req.body.login !== req.userInfo.login) throw new Error('Invalid login');
+    const user = await updateUser(req.body);
+    return res.json(user);
+  } catch (err) {
+    return res.json({ err: err.message });
+  }
+});
+
+userRouter.delete('/', authMiddleware, async (req, res) => {
+  try {
+    if (req.body.login !== req.userInfo.login) throw new Error('Invalid login');
+    const user = await deleteUser(req.body);
+    return res.json(user);
   } catch (err) {
     return res.json({ err: err.message });
   }
