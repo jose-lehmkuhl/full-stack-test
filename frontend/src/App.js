@@ -1,5 +1,6 @@
 import React from 'react'
 
-const App = () => <></>
+import SignIn from './pages/SingIn'
+const App = () => <SignIn />
 
 export default App
