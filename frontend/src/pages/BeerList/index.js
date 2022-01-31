@@ -6,6 +6,8 @@ import CircularProgress from '@mui/material/CircularProgress'
 import { AuthContext } from '../../context/AuthContext'
 import api from '../../services/api'
 
+import Beer from './Beer'
+
 const BeerList = () => {
   const { token } = useContext(AuthContext)
   const [beers, setBeers] = useState([])
@@ -38,8 +40,8 @@ const BeerList = () => {
               <Grid container spacing={2} justifyContent='center' >
               {loading
                 ? <CircularProgress size={14} />
-                : console.log(beers)
-              }
+                : beers.slice(0, 10).map(beer => <Beer beer={beer} key={beer.id}/>)
+                }
               </Grid>
           </Container>
   )
