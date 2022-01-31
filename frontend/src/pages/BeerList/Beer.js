@@ -11,7 +11,7 @@ const Beer = ({ beer }) => {
     <Grid item lg={4} sm={6}>
         <ListItem alignItems="flex-start" key={beer.id}>
             <ListItemAvatar>
-                <img alt={beer.name} src={beer.image_url} width={'auto'} height={180}/>
+                <img alt={beer.name} src={beer.image_url || 'http://placebeer.com/90/180'} width={'auto'} height={180}/>
             </ListItemAvatar>
             <ListItemText
                 style={{ marginLeft: '5px' }}
