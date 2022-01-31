@@ -1,11 +1,11 @@
 import React from 'react'
 
-import SignIn from './pages/SingIn'
+import Router from './routes'
 import { AuthProvider } from './context/AuthContext'
 
 const App = () => (
   <AuthProvider>
-    <SignIn />
+    <Router />
   </AuthProvider>
 )
 
