@@ -34,3 +34,7 @@ O front-end deve apresentar pelo menos os seguintes requisitos:
 
 ## Extras:
 - Build para produção
+
+## Como executar:
+  - A aplicação pode ser rodada executando: `docker compose up` no diretorio raiz do projeto.
+    obs: é necessario que as portas `5432`,`3000` e `3001` nao estejam em uso
